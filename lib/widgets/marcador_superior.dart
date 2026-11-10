@@ -2,11 +2,15 @@
 import 'package:flutter/material.dart';
 import '../themes/tema_app.dart';
 
-// Widget que muestra las puntuaciones de los dos equipos.
+// Este widget muestra las puntuaciones de los dos equipos
+// en la parte superior de la pantalla.
 class MarcadorSuperior extends StatelessWidget {
+
+  // Recibimos las puntuaciones desde la pantalla principal.
   final int puntosLocal;
   final int puntosVisitante;
 
+  // Constructor con las dos puntuaciones obligatorias.
   const MarcadorSuperior({
     super.key,
     required this.puntosLocal,
@@ -15,18 +19,26 @@ class MarcadorSuperior extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // Container crea el fondo y establece las dimensiones del marcador.
     return Container(
       height: 64,
       padding: const EdgeInsets.symmetric(horizontal: 16),
+
+      // BoxDecoration permite configurar el fondo, los bordes
+      // y las esquinas redondeadas del marcador.
       decoration: BoxDecoration(
         color: TemaApp.gris,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.white54),
       ),
+
+      // Row organiza los elementos horizontalmente.
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Indicador del equipo local.
+
+          // INDICADOR DEL EQUIPO LOCAL.
           const Row(
             children: [
               Icon(Icons.circle, color: TemaApp.azul, size: 9),
@@ -41,7 +53,7 @@ class MarcadorSuperior extends StatelessWidget {
             ],
           ),
 
-          // Puntuaciones centrales.
+          // PUNTUACIONES CENTRALES.
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -53,6 +65,10 @@ class MarcadorSuperior extends StatelessWidget {
             ),
             child: Row(
               children: [
+
+                // Mostramos la puntuación del equipo local.
+                // El símbolo $ permite introducir el valor de una variable
+                // dentro de un texto.
                 Text(
                   '$puntosLocal',
                   style: const TextStyle(
@@ -61,6 +77,8 @@ class MarcadorSuperior extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+
+                // Texto que separa las puntuaciones.
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
@@ -71,6 +89,8 @@ class MarcadorSuperior extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                // Mostramos la puntuación del equipo visitante.
                 Text(
                   '$puntosVisitante',
                   style: const TextStyle(
@@ -83,7 +103,7 @@ class MarcadorSuperior extends StatelessWidget {
             ),
           ),
 
-          // Indicador del equipo visitante.
+          // INDICADOR DEL EQUIPO VISITANTE.
           const Row(
             children: [
               Text(
